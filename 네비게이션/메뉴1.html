@@ -9,13 +9,30 @@
 <body>
   <nav id = "navbar">  
     <div> 
-     <ul id ="navbar_menu">
-      <li class = "navbar_menu_item">HOME</li>
-      <li class = "navbar_menu_item">SEARCH</li>
-      <li class = "navbar_menu_item">COMMUNITY</li>
-    </ul>
-  </div>
- </nav>
+      <ul id ="navbar_menu">
+        <li class = "navbar_menu_item">HOME</li>
+        <li class = "navbar_menu_item">SEARCH</li>
+        <li class = "navbar_menu_item">COMMUNITY</li>
+      </ul>
+    </div>
+  </nav>
+
+
+  <script>
+    const ul = document.querySelector("ul")
+    console.log(ul);
+    ul.addEventListener('click',(event)=>{
+      //console.log("클릭성공");
+      //console.log(event.target.value);0만 출력됨. li구분이 어려움
+      console.log(event.target.closest('li'));
+      const li = event.target.closest("li")
+      //li태그가 참조하는것이 li태그이므로 그 변수명에 .을 찍고 textContent속성을 적으면
+      //li태그의 text node만 가져온다.
+      console.log(li.textContent);
+    })
+  </script>
 </body>
+
+
 
 </html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      list-style: none;
+    }
+    li {
+      cursor: pointer; /* 마우스 커서 변경 */
+      padding: 3px; 
+    }
+    li:hover{ /*li:hover >> 마우스가 li엘리먼트에 오버되었을때 배경색 변경*/
+      background-color: aqua;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li>메뉴1</li>
+    <li>메뉴2</li>
+    <li>메뉴3</li>
+  </ul>
+  <script>
+    const items = document.querySelectorAll("ul li")
+    console.log(typeof items); // 배열도 오브젝트이다
+    // items에 li태그가 3개 들어가 있다.
+    // forEach는 반복문이다. 배열에 있는 모든 원소를 접근할 때 사용.
+    items.forEach((li) => {
+      li.addEventListener('click', () => {
+        console.log(li.textContent);
+      })
+    })
+
+  </script>
+</body>
+</html>
+<!--
+ul>li*3{메뉴$} 
+
+
+
+
+
+-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -18,15 +18,25 @@ const NEWS_URL = "https://api.hnpwa.com/v0/news/1.json"
 // ex) xhr.open(param1, param2, param3)
 xhr.open('GET', NEWS_URL,false)
 //send도 XMLHttpRequest가 제공하는 함수
+
 xhr.send() // send가 호출되면 서버에 요청을 보냄
 
-console.log(xhr.response)
-console.log(xhr.responseText)
-// console.log(xhr.responseXML) >> null 응답결과가 json이었음
 
-const newsList = JSON.parse(xhr.response)
-console.log(newsList[0].title);
-console.log(newsList[1].title);
-console.log(newsList[2].title);
+const newsList = JSON.parse(xhr.responseText);
+const top10 = newsList.slice(0, 10); // 앞에서 10개만 추출
+
+    const v_root = document.querySelector('#root');
+    let listHTML = "<h2>해커뉴스 TOP 10</h2><ul>";
+
+    top10.forEach(item => {
+      listHTML += `<li><a href="${item.url}" target="_blank">${item.title}</a></li>`;
+    });
+
+    listHTML += "</ul>";
+    v_root.innerHTML = listHTML;
+//console.log(v_root);
+
+
+
 
 
