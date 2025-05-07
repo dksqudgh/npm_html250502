@@ -29,3 +29,4 @@ console.log(newsList[0].title);
 console.log(newsList[1].title);
 console.log(newsList[2].title);
 
+
