@@ -5,7 +5,7 @@ const CONTENT_URL = "https://api.hnpwa.com/v0/item/@id.json"
 
 function getData(url) // 함수파라미터 자리에 선언된 변수는 지역변수이다.
 {
-  xhr.open('GET', url,false) // GET 방식으로 , url변수를  , 비동기로 가져와라 라는것   true는 동기
+  xhr.open('GET', url,false) // GET 방식으로 , url변수를  , 동기로 가져와라 라는것   true는 동기
   xhr.send() 
   
   return JSON.parse(xhr.responseText)
@@ -15,19 +15,18 @@ const newsList = getData(NEWS_URL)
 
 const content = document.createElement('div') // div 태그 생성
 const ul = document.createElement('ul') // ul 태그 생성
-const title = document.createElement('h1') // h1 태그 생성 <h1></h1>
 
 window.addEventListener(
   "hashchange",
   () => {
     const id = location.hash.substring(1) // 0번째 자리에는 #이 들어가므로 1번째 자리부터 가져옴 
     console.log(location.hash); // location.hash는 현재 URL의 해시 부분을 가져옴
-
-    const newsContent = getData(CONTENT_URL.replace('@id', id)) // @id를 id로 바꿔서 가져옴
     
+    const newsContent = getData(CONTENT_URL.replace('@id', id)) // @id를 id로 바꿔서 가져옴
+    const title = document.createElement('h1') // h1 태그 생성 <h1></h1>
     title.innerText = newsContent.title // <h1>뉴스제목</h1>
     content.appendChild(title) // div 태그에 h1 태그 끼워넣는것
-    
+    content.replaceChildren(title)
     
   });
 

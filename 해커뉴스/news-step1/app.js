@@ -12,7 +12,7 @@ const NEWS_URL = "https://api.hnpwa.com/v0/news/1.json"
 // 파라미터 갯수는 3개
 // param1 - GET 전송방식(Rest API)
 // param2 - URL 해커뉴스의 최신목록을 가져오는 URL
-// param3 - true(동기)  or  false(비동기)  false가 디폴값임
+// param3 - true(비동기)  or  false(동기)  false가 디폴값임
 // . = 닷트연산자 함수를 호출할때 사용함
 
 // ex) xhr.open(param1, param2, param3)

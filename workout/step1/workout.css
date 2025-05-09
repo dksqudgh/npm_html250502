@@ -1,0 +1,37 @@
+*{
+  border : 1px solid rgb(255, 255, 255); /* 1 */
+  box-sizing: border-box /* 2 */
+}
+
+button {
+  outline: none;
+  border: 0;
+  cursor: pointer;
+  
+}
+
+ul{
+  list-style: none;
+}
+
+.workout-button {
+  font-size: 18px;
+  margin: 0 5px;
+  background-color: transparent; 
+}
+
+.workout-button:hover{
+  opacity: 0.7;
+}
+
+.workout-increase,
+.workout-decrease
+{ 
+  color: goldenrod;
+}
+
+.workout-delete
+{
+  color: darkred;
+}
+
