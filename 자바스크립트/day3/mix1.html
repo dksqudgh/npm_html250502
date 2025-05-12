@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- 자바스크립트 호출해야 실행됨 - 선언-->
+<script type="text/javascript">
+  function message(){//fuction을 붙혀서 선언하면 함수의 호이스팅이 발동함.
+                     //호이스팅은 전역변수화 하는것 위치상관없이 읽어올 수 있음.
+    console.log("message호출");
+    //함수안에 처리를 진행하려면 반드시 호출을 해야 한다.
+  }
+</script>
+</head>
+<body>
+  <style> 
+    * {
+        border : solid red;
+      }
+  </style>
+
+<script>
+  message();
+</script>
+  <div id="root">div root</div>
+  <div class="root">div home</div>
+
+</body>
+</html>
