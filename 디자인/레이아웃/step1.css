@@ -137,6 +137,7 @@ ul{/*li태그 구슬 없애기*/
     flex-direction: column;
     display: block;
     text-align: center;
+    
   }
 
 }
