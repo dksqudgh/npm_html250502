@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /*DOM Tree -> CSSOM -> Render Tree */
+    body {
+      background-color: black;
+    }
+    div {
+      width: 250px;
+      height: 250px;
+      background-color: aquamarine;
+      margin-bottom: 4px;
+      border-radius: 4px;
+    }
+
+    .special {
+      background-color: bisque;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div class = "special"></div>
+  <div></div>
+  <div></div>
+  <script>
+    const special = document.querySelector(".special")
+    //JS에서는 어떤 이름에 더블이나 싱글 쿼테이션이 없으면 변수 취급함.
+    //이렇게 될 경우 Undefined가 보일것.
+
+    //콜백함수의 파라미터 자리에 event는 내가 생성한 객체가 아니다. 주입받은거다.
+    //제어권 -> 의존성 주입 -> 프레임워크
+    special.addEventListener("click",(event) =>{//호이스팅은 발생하지 않음
+      console.log("클릭");
+      //중괄호가 있으면 처리부 (변수선언,조건문,반복문)- 처리)
+      console.log(`client : ${event.clientX},${event.clientY}`);
+      console.log(`page :${event.pageX},${event.pageY}`);
+    })
+  </script>
+</body>
+</html>
