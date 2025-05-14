@@ -4,6 +4,7 @@
 
 ul{
   padding: 0;
+  list-style: none;
 }
 
 body{
@@ -31,10 +32,17 @@ button{
   background: #2A7B9B;
   background: linear-gradient(90deg, rgba(42, 123, 155, 1) 0%, rgba(87, 199, 133, 1) 0%, rgba(247, 222, 32, 1) 79%);
   border-radius: 20px 20px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
+
 
 .items{
   height: 450px;
+  
+  overflow-y: auto;
+  margin-bottom: 12px;
 }
 
 .item{
@@ -93,4 +101,31 @@ button{
 .footer_button:hover{
   transform: scale(1.1);
   transition: transform 150ms ease-in;
+}
+
+.load_sample_button{
+  border: none;
+  background: none;
+  color: black;
+  padding: 10px;
+  /*cursor: pointer;*/
+  transition: transform 150ms ease-in;
+}
+
+.load_sample_button:hover{
+  transform: scale(1.1);
+  
+}
+
+.reset_button{
+  border: none;
+  background: none;
+  color: black;
+  padding: 10px;
+  transition: transform 150ms ease-in;
+}
+
+.reset_button:hover{
+  transform: rotate(120deg);
+  
 }

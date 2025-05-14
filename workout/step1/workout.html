@@ -8,35 +8,46 @@
   <link rel="stylesheet" href="./workout.css">
 </head>
 <body>
+
   <script>
-    window.addEventListener("load", (event) => {
-      init()
-    });
-  </script>
-  <ul class="ul"></ul>
-  <script>
-    console.log("여기");
-    const items = [
-      {id:1, name: '벤치프레스', count: 0},
-      {id:2, name: '렛풀다운', count: 0},
-      {id:3, name: '스쿼트', count: 0},
-    ]
+
+    let items = []
+
     const handleIncrement = (id) => {
       console.log("handleIncrement호출 성공"+id);
-      items[id].count = items[id].count + 1
+      const index = id - 1
+      items[index].count = items[index].count + 1
+      const cnt = document.querySelector(`.workout-count${id}`)
+      cnt.innerHTML = items[index].count
     }//arrow function
-    const handleDecrement = (id) => {
+
+    const handleDecrement = (id) => { // 여긴 -1을 하는 부분이기에 -1이 나올 경우를 생각해야함.
       console.log("handleDecrement호출 성공");
+      const index = id - 1
+      const count = items[index].count - 1
+
+      items[index].count = count < 0 ? 0: count //if 대신 삼항연산자
+
+      const cnt = document.querySelector(`.workout-count${id}`)
+      cnt.innerHTML = items[index].count
+      
     }//end of handleDecrement
+
+
     const handleDelete = (id) => {
       console.log("handleDelete호출 성공");
+      const deleteRow = items.filter((items)=> items.id != id)
+      console.log(deleteRow);
+      items = [...deleteRow]
+      init()
     }//end of handleDelete
+
     const init = () => {
       let lis = ''
       for(let i=0;i<items.length;i=i+1){
         lis = lis + '<li class="workout">'
         lis = lis +`<span class="workout-name">${items[i].name}</span>`
-        lis = lis +`<span class="workout-count${i}">  ${items[i].count}</span>`
+        lis = lis +`<span class="workout-count${items[i].id}">  ${items[i].count}</span>`
         lis = lis +`<button class="workout-button workout-increase" onClick="handleIncrement('${items[i].id}')">`
         lis = lis +'<i class="fas fa-plus-square"></i>'
         lis = lis +'</button>'
@@ -52,8 +63,44 @@
       ul.innerHTML = lis
     }//end of init
 
+    //Add버튼 클릭했을때
+    const handleAdd = () =>{
+      const imsi = document.querySelector(".add-input")
+      const name = imsi.value
+      if(name.trim() == 0){
+        imsi.value = ''
+        return
+      }
+      const workouts = [...items,{id:items.length+1, name:name, count: 0}]
+      items = [...workouts]
+      imsi.value = ''
+
+    init()
+    }
+    
+    
 
   </script>
+
+  <div class="navbar">
+        <i class="navbar-logo fas fa-leaf"></i>
+        <span>Workout Tracker</span>
+        <span class="navbar-count">0</span>
+    </div>
+    <div class="workouts">
+        <form class="add-for">
+            <input 
+                type="text" class="add-input" placeholder="운동이름"/>
+            <button type = "button" class="add-button" onclick="handleAdd()">add</button>
+        </form>        
+        <ul class="ul">          
+        </ul>
+    </div>
+
+    
+  <ul class="ul"></ul>
+
+  
 
 </body>
 </html>

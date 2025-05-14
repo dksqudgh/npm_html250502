@@ -12,7 +12,9 @@ button {
 
 ul{
   list-style: none;
+  padding-left: 0px;
 }
+
 
 .workout-button {
   font-size: 18px;
@@ -35,3 +37,37 @@ ul{
   color: darkred;
 }
 
+.navbar{
+  font-size: 28px;
+  padding: 20px;
+
+}
+
+.navbar-logo{
+  color: green;
+}
+
+.navbar-count{
+  display: inline-block;
+  background-color: green;
+  width: 30px;
+  height: 30px;
+  line-height: 25px;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+}
+
+.add-input{
+  font-size: 30px;
+  background-color: bisque;
+  border-radius: 8px;
+}
+
+.add-button{
+  font-size: 22px;
+  background-color: green;
+  color: white;
+  font-size: 1.4em;
+  padding: 0.21em;
+}
