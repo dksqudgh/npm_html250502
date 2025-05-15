@@ -1,3 +1,9 @@
+const sampleTodos = [
+  {id:1,text:'학교가기',complete:true},
+  {id:2,text:'친구만나기',complete:true},
+  {id:3,text:'과제제출',complete:false},
+]
+
 //사용자가 입력하는 컴포넌트 >> input태그
 const items = document.querySelector(".items") // ul태그
 
@@ -5,6 +11,9 @@ const input = document.querySelector(".footer_input") // input태그
 
 const addBtn = document.querySelector(".footer_button") // home버튼
 
+const loadSampleBtn = document.querySelector(".load_sample_button")
+
+const resetBtn = document.querySelector(".reset_button")
 
 const onAdd = () => {
   //사용자가 입력한 친구만나기를 읽어와서 createItem함수를 호출할 때
@@ -43,11 +52,25 @@ const createItem = (itemName) => {
   const deleteBtn = itemRow.querySelector('.item_delete')
   deleteBtn.addEventListener('click',()=>{
     items.removeChild(itemRow)
+    console.log(itemRow);
   })
+
 
   return itemRow // return 뒤에는 무엇도 작성해서는 안됨
 
 }
+
+const getTodoList = () => {
+  while(items.firstChild){
+    items.removeChild(items.firstChild)
+  }
+
+  sampleTodos.forEach(todo => {
+    const item = createItem(todo.text)
+    items.appendChild(item)
+  })
+}
+loadSampleBtn.addEventListener('click', getTodoList)
 
 addBtn.addEventListener('click',()=>{
   console.log("plus");
@@ -60,3 +83,11 @@ input.addEventListener('keydown',(e)=>{
     onAdd();
   }
 })
+
+const deleteAll = () => {
+  while(items.firstChild){
+    items.removeChild(items.firstChild)
+  }
+}
+resetBtn.addEventListener('click',deleteAll)
+
