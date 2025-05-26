@@ -40,3 +40,23 @@ const top10 = newsList.slice(0, 10); // 앞에서 10개만 추출
 
 
 
+
+const ul = document.createElement('ul') // ul 태그 생성
+
+
+for(let i = 0; i < 10; i++){
+const li = document.createElement('li') // li 태그 생성
+li.innerHTML = newsList[i].title // li 태그에 제목 추가 
+ul.appendChild(li) // ul 태그에 li 태그 추가  appendChild는 자식으로 추가하는 것
+}
+
+console.log(newsList[0]) // 0번째 뉴스 제목;
+// root는 div태그 >> ul 태그를 div 태그에 추가
+
+
+
+
+
+
+
+
