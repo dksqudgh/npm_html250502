@@ -1,0 +1,37 @@
+fieldset {
+        width: 1038px;
+      }
+      label {
+        width: 80px;
+        display: inline-block;
+        text-align: center;
+      }
+      #title {
+        width: 500px;
+      }
+      #content {
+        height: 100px;
+        width: 500px;
+      }
+      .form-example {
+        margin-top: 10px;
+      }
+
+      .button {
+        text-align: center;
+        width: 600px;
+      }
+
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+      td {
+        background-color: beige;
+      }
+
+      th {
+        color: white;
+        background-color: orange;
+      }

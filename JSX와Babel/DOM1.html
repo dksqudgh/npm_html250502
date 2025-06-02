@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <!--JSX를 통해서 DOM을 생산하고 반영한다.-->
+  <div id="root"></div>
+  <script type="text/babel">
+    const rootElement = document.querySelector('#root')
+    const msg = 'Hello React!!!'
+    //JSX는 HTML태그와 JS를 섞어쓰기 이다.
+    const element = <h2>{msg}</h2>  //{}이거만 하면 어디든 JS를 사용할 수 있다.
+    ReactDOM.createRoot(rootElement).render(element)
+  </script>
+</body>
+</html>
+<!--
+ES5같은 하위 버전에서도 도작하도록 Babel을 추가 하였음
+CDN방식 - 로컬PC 캐쉬 사용함 - 시스템 사용 발생 - 속도 느림
+UNPKG방식 - 네트워크 통해 객체 주입 - 속도 향상이 있음
+-->
