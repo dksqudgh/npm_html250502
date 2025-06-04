@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="userInfo"></div>
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    console.log(urlParams.get('email'));
+    console.log(urlParams.get('nickname'));
+    console.log(urlParams.get('name'));
+    console.log(urlParams.get('id'));
+    console.log(urlParams.get('birthday'));
+    console.log(urlParams.get('email'));
+    console.log(urlParams.get('email'));
+    console.log(urlParams.get('email'));
+    const displayUserInfo = ()=>{
+      document.querySelector('#userInfo').innerHTML = "<h3>lee@hot.com</h3>"
+    }
+    window.onload = displayUserInfo()
+  </script>
+</body>
+</html>

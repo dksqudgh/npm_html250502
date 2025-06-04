@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="signup.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  </head>
+<body>
+  <script>
+    let params = new URLSearchParams(document.location.search);
+    let name = params.get("type");
+    if(name === 'member'){
+      console.log('회원페이지');
+      
+    }
+    else if(name === 'teacher'){
+      console.log('강사페이지');
+    }
+
+
+    
+  </script>
+  <form class="signup-form" id="signupForm" autocomplete="off" method="get" action="signupAction.html">
+    <h1 class="my-h1">회원가입</h1>
+    <div class="signup-row">
+      <div class="signup-section">
+        <div class="item-section">
+          <label class="my-label">이메일 <span class="required">*</span>
+            <input type="email" class="my-input" id="email" name="email" placeholder="이메일을 입력해주세요." required />
+            <div class="my-label-ab" id="email-ab"></div>
+          </label>
+          <button type="button" class="my-button" id="checkEmailBtn">중복확인</button>
+        </div>
+        <div class="item-section">
+          <label class="my-label">닉네임 <span class="required">*</span>
+            <input type="text" class="my-input" id="nickname" name="nickname" value="의적홍길동" placeholder="닉네임을 입력해주세요."
+              required />
+            <div class="my-label-ab" id="nickname-ab"></div>
+          </label>
+          <button type="button" class="my-button" id="checkNicknameBtn">중복확인</button>
+        </div>
+        <label class="my-label">비밀번호 <span class="required">*</span>
+          <input type="password" class="my-input" id="password" name="password" placeholder="비밀번호를 입력해주세요." required />
+          <i class="fa fa-eye pw-eye" id="togglePassword"></i>
+          <div class="my-label-ab" id="password-ab"></div>
+        </label>
+        <label class="my-label">비밀번호 확인 <span class="required">*</span>
+          <input type="password" class="my-input" id="password2" name="password2" placeholder="비밀번호를 한번 더 입력해주세요."
+            required />
+          <i class="fa fa-eye pw-eye" id="togglePassword2"></i>
+          <div class="my-label-ab" id="password2-ab"></div>
+        </label>
+      </div>
+      <div class="signup-section">
+        <label class="my-label">이름 <span class="required">*</span>
+          <input type="text" class="my-input" id="name" name="name" value="홍길동" placeholder="이름을 입력해주세요." required />
+          <div class="my-label-ab" id="name-ab"></div>
+        </label>
+        <label class="my-label">전화번호
+          <input type="text" class="my-input" id="hp" name="hp" value="01012345678" placeholder="전화번호를 입력해주세요." />
+          <div class="my-label-ab" id="hp-ab"></div>
+        </label>
+        <label class="my-label">생년월일
+          <input type="text" class="my-input" id="birthday" name="birthday" placeholder="생년월일(YYYYMMDD)" />
+          <div class="my-label-ab" id="birthday-ab"></div>
+        </label>
+        <label class="my-label">주소
+          <div class="address-flex">
+            <input type="text" class="my-input" id="post" name="post" placeholder="주소 검색을 해주세요." readonly />
+            <button type="button" class="my-button" id="searchAddrBtn">주소검색</button>
+          </div>
+        </label>
+        <label class="my-label">상세주소
+          <input type="text" class="my-input" id="postDetail" name="postDetail" placeholder="상세주소를 입력해주세요." />
+        </label>
+        <label class="my-label" style="margin-bottom: 0">성별</label>
+        <div class="gender-group">
+          <label><input type="radio" name="gender" value="없음" checked /> 없음</label>
+          <label><input type="radio" name="gender" value="남자" /> 남자</label>
+          <label><input type="radio" name="gender" value="여자" /> 여자</label>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="submit-button" id="signupBtn" disabled>가입하기</button>
+  </form>
+
+  <script>
+    document.querySelector('#searchAddrBtn').addEventListener('click',(e)=>{
+      e.preventDefault
+      new daum.Postcode({
+        oncomplete:  (data)=> {
+          // 선택된 주소 정보를 #post input에 넣음
+          document.querySelector('#post').value = data.address;
+          document.querySelector('#postDetail').focus()
+        }
+      }).open();
+    });
+
+    document.querySelector('#togglePassword').onclick = function(){
+      const pw = document.querySelector('#password')
+      this.classList.toggle('fa-eye-slash')
+      pw.type = pw.type === 'password' ? 'text': 'password'
+      this.style.color = pw.type === 'password' ? '#bbbbbb': '#111111'
+      
+    }
+
+    document.querySelector('#togglePassword2').onclick = function(){
+      const pw = document.querySelector('#password2')
+      this.classList.toggle('fa-eye-slash')
+      pw.type = pw.type === 'password' ? 'text': 'password'
+      this.style.color = pw.type === 'password' ? '#bbbbbb': '#111111'
+    }
+
+    const requiredIds = ['email','nickname','password','password2','name']
+    requiredIds.forEach(id=>{
+      document.querySelector(`#${id}`).addEventListener('input',checkFormReady)
+    })
+
+    function checkFormReady(){
+      const allFilled = requiredIds.every(id => document.querySelector(`#${id}`).value.trim())
+      const pw = document.querySelector('#password').value
+      const pw2 = document.querySelector('#password2').value
+      const pwMatch = pw && pw2 && pw === pw2
+      document.querySelector('#signupBtn').disabled =!(allFilled && pwMatch)
+      
+      
+    }
+
+    document.querySelector('#signupBtn').addEventListener('click',(e)=>{
+      e.preventDefault()
+      console.log('회원가입성공');
+    })
+  </script>
+</body>
+</html>
