@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type = "text/babel">
+    const root = document.querySelector("#root")
+    const Num = ({number1})=>{
+      if(number1 % 2 === 0){
+        return(<h1>{number1}</h1>)
+      }
+      else{
+        return(<h3>{number1}</h3>)
+      }
+    }
+    const element = (
+      <>
+        <Num number1={0}/>
+        <Num number1={1}/>
+        <Num number1={2}/>
+        <Num number1={3}/>
+        <Num number1={4}/>
+      </>
+    )
+    ReactDOM.createRoot(root).render(element)
+  </script>
+</body>
+</html>
+<!--
+텍스트가 대문자로 시작하면 h1 
+소문자로 시작하면 h3로 출력하는 코드를 작성하시오
+-->

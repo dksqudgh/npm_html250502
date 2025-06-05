@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type = "text/babel">
+    const root = document.querySelector("#root")
+    const Num = (props)=>{
+      const{x,selected} = props
+      return selected ? <h1>{x}</h1> : <h3>{x}</h3>
+    }
+    const element = (
+      <>
+      {[1,2,3,4,5,6,7,8,9,10].map((item,index)=>(
+        <Num key={index} x={item} selected={item % 3 == 0}/>
+      ))}
+      </>
+    )
+    ReactDOM.createRoot(root).render(element)
+  </script>
+</body>
+</html>
+<!--
+텍스트가 대문자로 시작하면 h1 
+소문자로 시작하면 h3로 출력하는 코드를 작성하시오
+-->
